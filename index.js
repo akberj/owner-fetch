@@ -228,4 +228,8 @@ app.get("/connect", function (req, res) {
     });
 });
 
-app.listen();
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log("listening on 5000");
+});
