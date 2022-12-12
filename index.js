@@ -121,46 +121,46 @@ puppeteer.use(
 var { executablePath } = require("puppeteer");
 // That's it, the rest is puppeteer usage as normal 😊
 
-// app.get("/con", function (req, res) {
-//   console.log(req.query);
-//   puppeteer
-//     .launch({ headless: true, executablePath: executablePath() })
-//     .then(async (browser) => {
-//       const page = await browser.newPage();
-//       await page.setViewport({ width: 800, height: 600 });
+app.get("/con", function (req, res) {
+  console.log(req.query);
+  puppeteer
+    .launch({ headless: true, executablePath: executablePath() })
+    .then(async (browser) => {
+      const page = await browser.newPage();
+      await page.setViewport({ width: 800, height: 600 });
 
-//       console.log(`Testing adblocker plugin..`);
-//       await page.goto(
-//         'https://www.google.com/search?q=www.allbiz.com+"' +
-//           req.query.q +
-//           '"+primary+contact+for'
-//       );
-//       await page.solveRecaptchas();
+      console.log(`Testing adblocker plugin..`);
+      await page.goto(
+        'https://www.google.com/search?q=www.allbiz.com+"' +
+          req.query.q +
+          '"+primary+contact+for'
+      );
+      await page.solveRecaptchas();
 
-//       await page.waitForTimeout(5000);
-//       // await page.screenshot({ path: "adblocker.png", fullPage: true });
-//       let textContent = "";
-//       //await page.waitForSelector(".Z26q7c");
-//       if ((await page.$(".Z26q7c")) !== null) {
-//         textContent = await page.evaluate(() => {
-//           return document.querySelectorAll(".Z26q7c")[1].innerText;
-//         });
-//       } else {
-//         textContent = "No owner found";
-//       }
+      await page.waitForTimeout(5000);
+      // await page.screenshot({ path: "adblocker.png", fullPage: true });
+      let textContent = "";
+      //await page.waitForSelector(".Z26q7c");
+      if ((await page.$(".Z26q7c")) !== null) {
+        textContent = await page.evaluate(() => {
+          return document.querySelectorAll(".Z26q7c")[1].innerText;
+        });
+      } else {
+        textContent = "No owner found";
+      }
 
-//       // const textContent = await page.evaluate(() => {
-//       //   let el = document.querySelectorAll(".Z26q7c")[1].innerText;
+      // const textContent = await page.evaluate(() => {
+      //   let el = document.querySelectorAll(".Z26q7c")[1].innerText;
 
-//       //   return el ? el.innerText : "Now owner found";
-//       // });
+      //   return el ? el.innerText : "Now owner found";
+      // });
 
-//       console.log(`All done, check the screenshots. ✨`);
-//       await browser.close();
+      console.log(`All done, check the screenshots. ✨`);
+      await browser.close();
 
-//       res.json(textContent);
-//     });
-// });
+      res.json(textContent);
+    });
+});
 
 app.get("/connect", function (req, res) {
   console.log(req.query);
