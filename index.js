@@ -165,7 +165,7 @@ var { executablePath } = require("puppeteer");
 app.get("/connect", function (req, res) {
   console.log(req.query);
   puppeteer
-    .launch({ headless: true, executablePath: executablePath() })
+    .launch({ headless: true, executablePath: executablePath(),args: ['--no-sandbox','--disable-setuid-sandbox'] })
     .then(async (browser) => {
       const page = await browser.newPage();
       await page.setViewport({ width: 800, height: 600 });
